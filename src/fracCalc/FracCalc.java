@@ -7,10 +7,10 @@ public class FracCalc {
     public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
-    	Scanner keybrd = new Scanner(System.in); 
+    	Scanner scan = new Scanner(System.in); 
     	System.out.println("Fractions"); 
-    	String scan = Frac.nextLine(); 
-    	System.out.println(produceAnswer(scan)); 
+    	String scanned = scan.nextLine(); 
+    	System.out.println(produceAnswer(scanned)); 
 
     }
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -21,26 +21,26 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input)
+    public static String produceAnswer(String scanned)
     { 
     	/*String part1= "";   joel suggested this method but i did'nt completly understand it
         String part2= "";
         int funtion;
         String num1 = ""; 
         int num1i;  */
-    	String operator = ""; // found this on line but i don't really know where to go from here
+    	/*String operator = ""; // found this on line but i don't really know where to go from here
     	    	
     	for (int k=0; k<input.length() ; k++) 
     	{
     		String check1 = input.substring(k,k +1); 
-    	if (check1 == "+" || check1 == "-" || check1 == "*" || check1 == "/") 
+    	if (check1 == "+" || check1 == "-" || check1 == "*" || check1 == "/") */
+    	String first = scanned.substring(scanned.lastIndexOf(" ")+1);
 
 
         // TODO: Implement this function to produce the solution to the input
         
-        return "";
+        return first;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     }  
-}
