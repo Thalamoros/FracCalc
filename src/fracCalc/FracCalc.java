@@ -33,9 +33,14 @@ public class FracCalc {
     	for (int k=0; k<input.length() ; k++) 
     	{
     		String check1 = input.substring(k,k +1); 
-    	if (check1 == "+" || check1 == "-" || check1 == "*" || check1 == "/") */
+    	if (check1 == "+" || check1 == "-" || check1 == "*" || check1 == "/") 
+    	
+ 					I saw this method online but i just didn't understand how it worked so i didn't
+ 					bother continueing with this method
+    	
+    	*/
     	String first = scanned.substring(scanned.lastIndexOf(" ")+1);
-
+    		//after i really read through the read me i realized that it was a lot easier then i was making it
 
         // TODO: Implement this function to produce the solution to the input
         
