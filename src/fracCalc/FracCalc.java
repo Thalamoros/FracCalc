@@ -7,6 +7,9 @@ public class FracCalc {
     public static void main(String[] args) 
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
+    	
+    	
+    
     	Scanner scan = new Scanner(System.in); 
     	System.out.println("Fractions"); 
     	String scanned = scan.nextLine(); 
@@ -23,24 +26,10 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String scanned)
     { 
-    	/*String part1= "";   joel suggested this method but i did'nt completly understand it
-        String part2= "";
-        int funtion;
-        String num1 = ""; 
-        int num1i;  */
-    	/*String operator = ""; // found this on line but i don't really know where to go from here
-    	    	
-    	for (int k=0; k<input.length() ; k++) 
-    	{
-    		String check1 = input.substring(k,k +1); 
-    	if (check1 == "+" || check1 == "-" || check1 == "*" || check1 == "/") 
     	
- 					I saw this method online but i just didn't understand how it worked so i didn't
- 					bother continueing with this method
+        String secfrac = scanned.substring(scanned.lastIndexOf(" ")+1);
+    	String first = scanned.substring(0,secfrac.indexOf("_"));
     	
-    	*/
-    	String first = scanned.substring(scanned.lastIndexOf(" ")+1);
-    		//after i really read through the read me i realized that it was a lot easier then i was making it
 
         // TODO: Implement this function to produce the solution to the input
         
