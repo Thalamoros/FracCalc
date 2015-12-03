@@ -28,8 +28,8 @@ public class FracCalc {
     { 
     	
         String secfrac = scanned.substring(scanned.lastIndexOf(" ")+1);
-    	String first = scanned.substring(0,secfrac.indexOf("_"));
-    	
+    	String first= scanned.substring(0,secfrac.indexOf("_"));
+    	String denominator = scanned.substring( );
 
         // TODO: Implement this function to produce the solution to the input
         
