@@ -12,8 +12,8 @@ public class FracCalc {
     
     	Scanner scan = new Scanner(System.in); 
     	System.out.println("Fractions"); 
-    	String scanned = scan.nextLine(); 
-    	System.out.println(produceAnswer(scanned)); 
+    	String input = scan.nextLine(); 
+    	System.out.println(produceAnswer(input)); 
 
     }
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -25,8 +25,12 @@ public class FracCalc {
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
    public static String  splitFraction (String input)
-   { 	
-    public static String produceAnswer(String scanned)
+   { 	  	
+	String numerator = input.substring(input.lastIndexOf("/")+1);
+	String whole = input.substring(input.lastIndexOf("_"));
+	String denom= input.substring(input.lastIndexOf("/")-1);
+   }
+    public static String produceAnswer(String input)
     { 
     	
     	
@@ -43,7 +47,7 @@ public class FracCalc {
     	String[] answers = {"whole","numerator" ,"denominator"};
         // TODO: Implement this function to produce the solution to the input
         
-        return "whole:" + firstSplit[0] "numerator" + firstsplit[1] + "";
+        return ;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
