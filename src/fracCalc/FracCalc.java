@@ -26,10 +26,11 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
    public static String splitFraction (String input)
    { 	  	
-	String numerator = input.substring(input.lastIndexOf("/")+1);
-	String whole = input.substring(input.lastIndexOf("_"));
-	String denom= input.substring(input.lastIndexOf("/")-1);
-	return denom;
+	String numerator = input.substring(input.lastIndexOf("/")-1);
+	String whole = input.substring(input.lastIndexOf("_")-1);
+	String denom= input.substring(input.lastIndexOf("/")+1);
+	String[] values = {};
+	return values;
    }
     public static String produceAnswer(String input)
     { 
@@ -48,7 +49,7 @@ public class FracCalc {
     	String[] answers = {"whole","numerator" ,"denominator"};
         // TODO: Implement this function to produce the solution to the input
         
-        return answers ;
+        return "whole:" + numerator ;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
