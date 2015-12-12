@@ -24,10 +24,10 @@ public class FracCalc {
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
     
-    static String numerator = "";
-    static String denom = "";
-    static String whole = "";
-   
+   static String numerator = "";
+   static String denom = "";
+   static String whole = "";
+   static int operation;
    static String[] frac1 = new String [3];
    static String[] frac2 = new String [3];
    static String[] values = new String[3];
@@ -62,12 +62,110 @@ public class FracCalc {
    
    
    }
-   
+   public static String[] Calculations()
+   {
+    String[] SolvedEquation = new String[3];
+    int[]frac1int = new int[3];
+    int[]frac2int = new int[3];
+    String[]fracFinalstr = new String[3];
+    int[]fracFinal = new int[2];
+    int fracWhole = 0;
+    int fracNumerator = 0;
+    int fracDenom = 0;
+    int mixedNumerator1 = 0;
+    int mixedNumerator2 = 0;
+    int mixedDenom = 0;
+    frac1int[0] = Integer.parseInt(frac1[0]);
+    frac1int[1] = Integer.parseInt(frac1[1]);
+    frac1int[2] = Integer.parseInt(frac1[2]);
+    frac2int[0] = Integer.parseInt(frac2[0]);
+    frac2int[1] = Integer.parseInt(frac2[1]);
+    frac2int[2] = Integer.parseInt(frac2[2]);
     
+    
+    
+    if(operation == 1){  //add
+    fracWhole = frac1int[0] + frac2int[0];
+    	if(frac1int[2] == frac2int[2]){
+    		fracNumerator = frac1int[1] + frac2int[1];
+    		fracDenom = frac2int[2];
+    	} else {
+    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac2int[2]))* frac2int[2];
+    		mixedNumerator2 = (frac1int[1] + (frac1int[0] * frac2int[2]))* frac2int[2];
+    		mixedDenom = frac1int[2] * frac2int[2];
+    		fracNumerator = mixedNumerator1 +mixedNumerator2;
+    		fracDenom = mixedDenom;
+    	while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    		fracNumerator = fracNumerator - fracDenom;
+    		fracWhole = fracWhole + 1;
+    		System.out.println("test");
+    	}
+    	
+    	
+    	}
+    		
+    		
+    		
+    		
+    		
+    }
+    
+    if(operation == 2){  // subtract
+    
+    }
+    
+    if(operation == 3){  // multiply
+    	
+    }
+    
+    if(operation == 4){  // divide
+    	
+    }
+    if(fracDenom != 0){
+    fracFinal = Reduce(fracNumerator, fracDenom);
+    } else {
+    	fracDenom = fracDenom + 1;
+    	fracFinal = Reduce(fracNumerator, fracDenom);
+    }
+    		if (fracFinal[0] == fracFinal[1]){
+    			fracWhole = fracWhole + 1;
+    			fracFinalstr[0] = "" + fracWhole;
+    		}else if(fracWhole == 0 ){
+    			fracFinalstr[0] = "0";
+    		} else {
+    			fracFinalstr[0] = fracWhole + "";
+    		}
+    if(fracFinal[0] == 0 && fracFinal[1] == 1){
+    	fracFinal[1] = 0;
+    }
+    
+    
+    
+    
+    
+    
+    
+    return SolvedEquation;
+   }
+   public static int GCF(int fracNumerator, int fracDenom){
+	   while(fracDenom > 0){
+		   int temp = fracDenom;
+		   fracDenom = fracNumerator % fracDenom;
+		   fracNumerator = temp;	   
+	   }
+	   return fracNumerator;
+   }
+   public static int[] Reduce (int fracNumerator, int fracDenom){
+	   
+	   int gcf = GCF(fracNumerator, fracDenom);
+	   int[] reducedFrac ={fracNumerator/gcf,fracDenom/gcf};	   
+	   return reducedFrac;
+   }
+   
+   
     public static String produceAnswer(String input)
     { 
-    	
-    	
+    	String operationType = "";
 
     	String[] fractions = input.split(" ");
     	
@@ -75,29 +173,49 @@ public class FracCalc {
     	frac1[0] = values[0];
     	frac1[1] = values[1];
     	frac1[2] = values[2];
-    	
+   
     	 values = splitFraction(fractions[1]);
      	String Operator = values[0];
-     	
-    	
     	 values = splitFraction(fractions[2]);
      	frac2[0] = values[0];
      	frac2[1] = values[1];
      	frac2[2] = values[2];
- 	
-     /*  String secfrac = scanned.substring(scanned.lastIndexOf(" ")+1);
-    	String first= scanned.substring(0,secfrac.indexOf("_"));
-    	String deno minator = scanned.substring(1,secfrac.lastIndexOf() );*/
-
-    	String[] values = new String[3];
-    	values[0] = whole;
-    	values[1] = denom;
-    	values[2] = numerator;
-    	String[] answers = {whole,numerator ,denom};
+     	if(Operator.contains("+")){
+     		operationType = "add";
+     		operation = 1;
+     	}
+     	if(Operator.contains("-")){
+     		operationType = "subtract";
+     		operation = 2;
+     	}
+     	if(Operator.contains("*")){
+     		operationType = "multiply";
+     		operation = 3;
+     	}
+     	if(Operator.contains("/")){
+     		operationType = "divide";
+     		operation = 4;
+     	}
+        System.out.println(operationType); 
+        String[]answers = new String[3];
+        answers = Calculations();
+    	System.out.println(answers[0]);
+    	if(answers[1].equals(answers[2])){
+    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+    	return answers[0];
+    	} else {if (answers[0].equals("0")) {
+    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+    	return answers[1] + "/" + answers[2];
+    	}else{
+    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+    	return answers[0] + "_" + answers[1] + "/" + answers[2];
+    	}
+    	
+    	
         // TODO: Implement this function to produce the solution to the input
-        System.out.println("whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
-        return "whole:" + frac2[0] + " " + "numerator:" + frac2[1] + " " + "denominator:" + frac2[2];
+    	}
+      }
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-    }  
+      
