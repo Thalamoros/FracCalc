@@ -13,7 +13,7 @@ public class FracCalc {
     	Scanner scan = new Scanner(System.in); 
     	System.out.println("Fractions"); 
     	String input = scan.nextLine(); 
-    	
+    	System.out.println(produceAnswer(input)); 
     }
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
     // This function takes a String 'input' and produces the result
@@ -27,21 +27,23 @@ public class FracCalc {
     static String numerator = "";
     static String denom = "";
     static String whole = "";
-  
-    
+   
+   static String[] frac1 = new String [3];
+   static String[] frac2 = new String [3];
+   static String[] values = new String[3];
+   
     public static String[] splitFraction (String input)
    { 	
 	  
 	   if(input.contains("_")){
-	 numerator = input.substring(input.lastIndexOf("/")-1);
-	 whole = input.substring(input.lastIndexOf("_")-1);
-	 denom = input.substring(input.lastIndexOf("/")+1);
+	 numerator = input.substring(input.indexOf("_")+ 1, input.indexOf("/"));
+	 whole = input.substring(0,input.indexOf("_"));
+	 denom = input.substring(input.indexOf("/")+ 1);
 	   } else {
 		   if(input.contains("/")){
 			   whole = "0";
-			   numerator = input.substring(input.lastIndexOf("/")-1);
-			   denom = input.substring(input.lastIndexOf("/")+1);
-					   
+			   numerator = input.substring(input.indexOf("_")+ 1, input.indexOf("/"));
+			   denom = input.substring(input.indexOf("/")+ 1);   
 		   } else {
 		   whole = input;
 		   numerator = "0";
@@ -53,20 +55,36 @@ public class FracCalc {
 		   
 	String[] values = new String[3];
 	values[0] = whole;
-	values[1] = denom;
-	values[2] = numerator;
+	values[1] = numerator;
+	values[2] = denom;
+	
 	return values;
+   
+   
    }
+   
+    
     public static String produceAnswer(String input)
     { 
     	
-    	System.out.println(produceAnswer(input)); 
+    	
 
+    	String[] fractions = input.split(" ");
     	
-    	String denom = input.substring(input.lastIndexOf("/")+1);
-    	String whole = input.substring(input.lastIndexOf("_"));
-    	String numerator = input.substring(input.lastIndexOf("/")-1);
+        values = splitFraction(fractions[0]);
+    	frac1[0] = values[0];
+    	frac1[1] = values[1];
+    	frac1[2] = values[2];
     	
+    	 values = splitFraction(fractions[1]);
+     	String Operator = values[0];
+     	
+    	
+    	 values = splitFraction(fractions[2]);
+     	frac2[0] = values[0];
+     	frac2[1] = values[1];
+     	frac2[2] = values[2];
+ 	
      /*  String secfrac = scanned.substring(scanned.lastIndexOf(" ")+1);
     	String first= scanned.substring(0,secfrac.indexOf("_"));
     	String deno minator = scanned.substring(1,secfrac.lastIndexOf() );*/
@@ -77,8 +95,8 @@ public class FracCalc {
     	values[2] = numerator;
     	String[] answers = {whole,numerator ,denom};
         // TODO: Implement this function to produce the solution to the input
-        
-        return "whole:" + values[0] + "Numerator: " + values[1] + "Denominator: " + values[2];
+        System.out.println("whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+        return "whole:" + frac2[0] + " " + "numerator:" + frac2[1] + " " + "denominator:" + frac2[2];
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
