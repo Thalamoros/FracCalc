@@ -64,7 +64,7 @@ public class FracCalc {
    }
    public static String[] Calculations()
    {
-    String[] SolvedEquation = new String[3];
+   
     int[]frac1int = new int[3];
     int[]frac2int = new int[3];
     String[]fracFinalstr = new String[3];
@@ -85,23 +85,36 @@ public class FracCalc {
     
     
     if(operation == 1){  //add
-    fracWhole = frac1int[0] + frac2int[0];
+    fracWhole = 0;
     	if(frac1int[2] == frac2int[2]){
     		fracNumerator = frac1int[1] + frac2int[1];
     		fracDenom = frac2int[2];
+    		fracWhole = frac1int[0] + frac2int[0];
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+        		fracNumerator = fracNumerator - Math.abs(fracDenom);
+        		fracWhole = fracWhole + 1; 
+        	     }
     	} else {
-    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac2int[2]))* frac2int[2];
-    		mixedNumerator2 = (frac1int[1] + (frac1int[0] * frac2int[2]))* frac2int[2];
+    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac1int[2]))* frac2int[2];
+    		mixedNumerator2 = (frac2int[1] + (frac2int[0] * frac2int[2]))* frac1int[2];
     		mixedDenom = frac1int[2] * frac2int[2];
-    		fracNumerator = mixedNumerator1 +mixedNumerator2;
+    		fracNumerator = mixedNumerator1 + mixedNumerator2;
     		fracDenom = mixedDenom;
+    		System.out.println(fracDenom);
+    		System.out.println(mixedNumerator1);
+    		System.out.println(mixedNumerator2);
+    	if(fracNumerator < 0 && fracDenom > 0){
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    			fracNumerator = fracNumerator + Math.abs(fracDenom);
+    			fracWhole = fracWhole - 1;
+    		}
+    	}else{    		
     	while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
-    		fracNumerator = fracNumerator - fracDenom;
-    		fracWhole = fracWhole + 1;
-    		System.out.println("test");
+    		fracNumerator = fracNumerator - Math.abs(fracDenom);
+    		fracWhole = fracWhole + 1; 
+    	     }
     	}
-    	
-    	
+    	  
     	}
     		
     		
@@ -111,15 +124,102 @@ public class FracCalc {
     }
     
     if(operation == 2){  // subtract
-    
+    	fracWhole = 0;
+    	if(frac1int[2] == frac2int[2]){
+    		fracNumerator = frac1int[1] - frac2int[1];
+    		fracDenom = frac2int[2];
+    		fracWhole = frac1int[0] - frac2int[0];
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+        		fracNumerator = fracNumerator - Math.abs(fracDenom);
+        		fracWhole = fracWhole + 1; 
+        	     }
+    	} else {
+    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac1int[2]))* frac2int[2];
+    		mixedNumerator2 = (frac2int[1] + (frac2int[0] * frac2int[2]))* frac1int[2];
+    		mixedDenom = frac1int[2] * frac2int[2];
+    		fracNumerator = mixedNumerator1 -  mixedNumerator2;
+    		fracDenom = mixedDenom;
+    		System.out.println(fracDenom);
+    		System.out.println(mixedNumerator1);
+    		System.out.println(mixedNumerator2);
+    	if(fracNumerator < 0 && fracDenom > 0){
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    			fracNumerator = fracNumerator + Math.abs(fracDenom);
+    			fracWhole = fracWhole - 1;
+    		}
+    	} else {    		
+    	while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    		fracNumerator = fracNumerator - Math.abs(fracDenom);
+    		fracWhole = fracWhole + 1; 
+    	     }
+    	   }
+    	}	
     }
     
     if(operation == 3){  // multiply
-    	
+    	fracWhole = 0;
+    	if(frac1int[2] == frac2int[2]){
+    		fracNumerator = frac1int[1] * frac2int[1];
+    		fracDenom = frac2int[2];
+    		fracWhole = frac1int[0] * frac2int[0];
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+        		fracNumerator = fracNumerator - Math.abs(fracDenom);
+        		fracWhole = fracWhole + 1; 
+        	     }
+    	} else {
+    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac1int[2]))* frac2int[2];
+    		mixedNumerator2 = (frac2int[1] + (frac2int[0] * frac2int[2]))* frac1int[2];
+    		mixedDenom = frac1int[2] * frac2int[2];
+    		fracNumerator = mixedNumerator1 *  mixedNumerator2;
+    		fracDenom = mixedDenom * mixedDenom;
+    		System.out.println(fracDenom);
+    		System.out.println(mixedNumerator1);
+    		System.out.println(mixedNumerator2);
+    	if(fracNumerator < 0 && fracDenom > 0){
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    			fracNumerator = fracNumerator + Math.abs(fracDenom);
+    			fracWhole = fracWhole - 1;
+    		}
+    	} else {    		
+    	while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    		fracNumerator = fracNumerator - Math.abs(fracDenom);
+    		fracWhole = fracWhole + 1; 
+    	     }
+    	   }
+    	}
     }
     
     if(operation == 4){  // divide
-    	
+    	fracWhole = 0;
+    	if(frac1int[2] == frac2int[2]){
+    		fracNumerator = frac1int[1] / frac2int[1];
+    		fracDenom = frac2int[2];
+    		fracWhole = frac1int[0] / frac2int[0];
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+        		fracNumerator = fracNumerator - Math.abs(fracDenom);
+        		fracWhole = fracWhole + 1; 
+        	     }
+    	} else {
+    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac1int[2]))* frac2int[2];
+    		mixedNumerator2 = (frac2int[1] + (frac2int[0] * frac2int[2]))* frac1int[2];
+    		mixedDenom = frac1int[2] * frac2int[2];
+    		fracNumerator = mixedNumerator1 *  mixedDenom;
+    		fracDenom = mixedDenom * mixedNumerator2;
+    		System.out.println(fracDenom);
+    		System.out.println(mixedNumerator1);
+    		System.out.println(mixedNumerator2);
+    	if(fracNumerator < 0 && fracDenom > 0){
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    			fracNumerator = fracNumerator + Math.abs(fracDenom);
+    			fracWhole = fracWhole - 1;
+    		}
+    	} else {    		
+    	while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    		fracNumerator = fracNumerator - Math.abs(fracDenom);
+    		fracWhole = fracWhole + 1; 
+    	     }
+    	   }
+    	}
     }
     if(fracDenom != 0){
     fracFinal = Reduce(fracNumerator, fracDenom);
@@ -137,20 +237,20 @@ public class FracCalc {
     		}
     if(fracFinal[0] == 0 && fracFinal[1] == 1){
     	fracFinal[1] = 0;
+    	
     }
+    fracFinalstr[1] = "" + fracFinal[0];
+    fracFinalstr[2] = "" + fracFinal[1];
     
     
-    
-    
-    
-    
-    
-    return SolvedEquation;
+    return fracFinalstr;
    }
    public static int GCF(int fracNumerator, int fracDenom){
+	 System.out.println(fracNumerator);
+	 System.out.println(fracDenom);
 	   while(fracDenom > 0){
 		   int temp = fracDenom;
-		   fracDenom = fracNumerator % fracDenom;
+		   fracDenom = Math.abs(fracNumerator) % fracDenom;
 		   fracNumerator = temp;	   
 	   }
 	   return fracNumerator;
@@ -197,17 +297,17 @@ public class FracCalc {
      		operation = 4;
      	}
         System.out.println(operationType); 
-        String[]answers = new String[3];
+        String[] answers = new String[3];
         answers = Calculations();
     	System.out.println(answers[0]);
     	if(answers[1].equals(answers[2])){
-    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2] + "\n");
     	return answers[0];
     	} else {if (answers[0].equals("0")) {
-    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2] + "\n");
     	return answers[1] + "/" + answers[2];
     	}else{
-    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2]);
+    		System.out.print("operationType: " + operationType + "\n" +  "whole1: " + frac1[0] + " " + "Numerator1: " + frac1[1] + " " + "Denominator1: " + frac1[2] + "\n" + "whole2: " + frac2[0] + " " + "Numerator2: " + frac2[1] + " " + "Denominator2: " + frac2[2] + "\n");
     	return answers[0] + "_" + answers[1] + "/" + answers[2];
     	}
     	
