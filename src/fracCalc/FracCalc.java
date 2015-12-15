@@ -160,7 +160,7 @@ public class FracCalc {
     	fracWhole = 0;
     	if(frac1int[2] == frac2int[2]){
     		fracNumerator = frac1int[1] * frac2int[1];
-    		fracDenom = frac2int[2];
+    		fracDenom = frac2int[2] * frac1int[2];
     		fracWhole = frac1int[0] * frac2int[0];
     		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
         		fracNumerator = fracNumerator - Math.abs(fracDenom);
@@ -190,8 +190,9 @@ public class FracCalc {
     }
     
     if(operation == 4){  // divide
-    	fracWhole = 0;
-    	if(frac1int[2] == frac2int[2]){
+    	fracWhole = 0; 
+    	System.out.println(frac2int[2]); 
+    	if(frac1int[2] == frac2int[1]){
     		fracNumerator = frac1int[1] / frac2int[1];
     		fracDenom = frac2int[2];
     		fracWhole = frac1int[0] / frac2int[0];
@@ -200,8 +201,8 @@ public class FracCalc {
         		fracWhole = fracWhole + 1; 
         	     }
     	} else {
-    		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac1int[2]))* frac2int[2];
-    		mixedNumerator2 = (frac2int[1] + (frac2int[0] * frac2int[2]))* frac1int[2];
+    		mixedNumerator1 = frac1int[1] + (frac1int[0] * frac1int[2]);
+    		mixedNumerator2 = frac2int[1] + (frac2int[0] * frac2int[2]);
     		mixedDenom = frac1int[2] * frac2int[2];
     		fracNumerator = mixedNumerator1 *  mixedDenom;
     		fracDenom = mixedDenom * mixedNumerator2;
@@ -209,7 +210,7 @@ public class FracCalc {
     		System.out.println(mixedNumerator1);
     		System.out.println(mixedNumerator2);
     	if(fracNumerator < 0 && fracDenom > 0){
-    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
+    		while(Math.abs(fracNumerator) > Math.abs(fracDenom)) {       
     			fracNumerator = fracNumerator + Math.abs(fracDenom);
     			fracWhole = fracWhole - 1;
     		}
@@ -292,7 +293,7 @@ public class FracCalc {
      		operationType = "multiply";
      		operation = 3;
      	}
-     	if(Operator.contains("/")){
+     	if(Operator.contains("0")){
      		operationType = "divide";
      		operation = 4;
      	}
