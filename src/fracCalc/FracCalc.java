@@ -160,7 +160,7 @@ public class FracCalc {
     	fracWhole = 0;
     	if(frac1int[2] == frac2int[2]){
     		fracNumerator = frac1int[1] * frac2int[1];
-    		fracDenom = frac2int[2] * frac1int[2];
+    		fracDenom = frac1int[2] * frac2int[2];
     		fracWhole = frac1int[0] * frac2int[0];
     		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
         		fracNumerator = fracNumerator - Math.abs(fracDenom);
@@ -192,10 +192,10 @@ public class FracCalc {
     if(operation == 4){  // divide
     	fracWhole = 0; 
     	System.out.println(frac2int[2]); 
-    	if(frac1int[2] == frac2int[1]){
-    		fracNumerator = frac1int[1] / frac2int[1];
-    		fracDenom = frac2int[2];
-    		fracWhole = frac1int[0] / frac2int[0];
+    	if(frac1int[2] ==  frac2int[1]){
+    		fracNumerator = frac1int[1] * frac2int[2];
+    		fracDenom = frac1int[2] * frac2int[1];
+    		fracWhole = frac1int[0] * frac2int[0];
     		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
         		fracNumerator = fracNumerator - Math.abs(fracDenom);
         		fracWhole = fracWhole + 1; 
@@ -203,7 +203,7 @@ public class FracCalc {
     	} else {
     		mixedNumerator1 = frac1int[1] + (frac1int[0] * frac1int[2]);
     		mixedNumerator2 = frac2int[1] + (frac2int[0] * frac2int[2]);
-    		mixedDenom = frac1int[2] * frac2int[2];
+    		mixedDenom = frac1int[1] * frac2int[2];
     		fracNumerator = mixedNumerator1 *  mixedDenom;
     		fracDenom = mixedDenom * mixedNumerator2;
     		System.out.println(fracDenom);
