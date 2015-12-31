@@ -213,13 +213,13 @@ public class FracCalc {
      		while(Math.abs(fracNumerator) > Math.abs(fracDenom)){
          		fracNumerator = fracNumerator - Math.abs(fracDenom);
          		fracWhole = fracWhole + 1; 
-         	     }
+         	     }    		
      	} else {
-     		mixedNumerator1 = frac1int[1] + (frac1int[0] * frac1int[2]);
-     		mixedNumerator2 = frac2int[1] + (frac2int[0] * frac2int[2]);
-     		mixedDenom = frac1int[2] * frac2int[2];
-     		fracNumerator = mixedNumerator1 *  mixedDenom;
-     		fracDenom = mixedDenom * mixedNumerator2;
+     		mixedNumerator1 = (frac1int[1] + (frac1int[0] * frac1int[2]));
+     		mixedNumerator2 = (frac2int[1] + (frac2int[0] * frac2int[2]));
+     		mixedDenom = frac1int[2] * frac2int[1];
+     		fracNumerator = mixedNumerator1 * frac2int[2];
+     		fracDenom = mixedNumerator2 * frac1int[2];
      		System.out.println(fracDenom);
      		System.out.println(mixedNumerator1);
      		System.out.println(mixedNumerator2);
